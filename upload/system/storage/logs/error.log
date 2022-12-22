@@ -1,0 +1,32 @@
+2022-12-07 19:13:15 - Error:  Class "ScssPhp\ScssPhp\Block\DirectiveBlock" not found
+File: D:\xamp2\htdocs\opencart-4.0.1.1\upload\system\storage\vendor\scssphp\scssphp\src\Parser.php
+Line: 855
+
+2022-12-07 19:13:17 - PHP Warning: rmdir(D:/xamp2/htdocs/opencart-4.0.1.1/upload/system/storage/logs): Directory not empty
+File: D:\xamp2\htdocs\opencart-4.0.1.1\upload\admin\controller\common\security.php
+Line: 198
+
+2022-12-07 19:13:17 - PHP Warning: rmdir(D:/xamp2/htdocs/opencart-4.0.1.1/upload/system/storage/cache/template/7d): Directory not empty
+File: D:\xamp2\htdocs\opencart-4.0.1.1\upload\admin\controller\common\security.php
+Line: 198
+
+2022-12-07 19:13:17 - PHP Warning: rmdir(D:/xamp2/htdocs/opencart-4.0.1.1/upload/system/storage/cache/template/47): Directory not empty
+File: D:\xamp2\htdocs\opencart-4.0.1.1\upload\admin\controller\common\security.php
+Line: 198
+
+2022-12-07 19:13:17 - PHP Warning: rmdir(D:/xamp2/htdocs/opencart-4.0.1.1/upload/system/storage/cache/template/41): Directory not empty
+File: D:\xamp2\htdocs\opencart-4.0.1.1\upload\admin\controller\common\security.php
+Line: 198
+
+2022-12-07 19:13:17 - PHP Warning: rmdir(D:/xamp2/htdocs/opencart-4.0.1.1/upload/system/storage/cache/template): Directory not empty
+File: D:\xamp2\htdocs\opencart-4.0.1.1\upload\admin\controller\common\security.php
+Line: 198
+
+2022-12-07 19:13:17 - PHP Warning: rmdir(D:/xamp2/htdocs/opencart-4.0.1.1/upload/system/storage/cache): Directory not empty
+File: D:\xamp2\htdocs\opencart-4.0.1.1\upload\admin\controller\common\security.php
+Line: 198
+
+2022-12-07 19:13:17 - PHP Warning: rmdir(D:/xamp2/htdocs/opencart-4.0.1.1/upload/system/storage/): Directory not empty
+File: D:\xamp2\htdocs\opencart-4.0.1.1\upload\admin\controller\common\security.php
+Line: 201
+

@@ -1,0 +1,295 @@
+{{ header }}
+{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      {% if developer_status %}
+      <div class="float-end">
+        <button type="button" id="button-setting" data-bs-toggle="tooltip" title="{{ button_developer }}"
+          class="btn btn-info">
+          <i class="fa-solid fa-cog"></i>
+        </button>
+      </div>
+      {% endif %}
+      <h1>
+        {{ heading_title }}
+      </h1>
+      <ol class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li class="breadcrumb-item">
+          <a href="{{ breadcrumb.href }}">
+            {{ breadcrumb.text }}
+          </a>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="status-card card-green">
+          <div class="flex item-center">
+            <i class="fas fa-user"></i>
+            <div>
+              <div class="font-base"> 25 </div>
+              <div> Team Members </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="status-card card-blue">
+          <div class="flex item-center">
+            <i class="fas fa-user"></i>
+            <div>
+              <div class="font-base"> 25 </div>
+              <div>
+                Twilio Numbers
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="status-card card-yello">
+          <div class="flex item-center">
+            <i class="fas fa-user"></i>
+            <div>
+              <div class="font-base"> 25 </div>
+              <div> Completed Calls </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="status-card card-red">
+          <div class="flex item-center">
+            <i class="fas fa-user"></i>
+            <div>
+              <div class="font-base"> 25 </div>
+              <div> Missed Calls </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card mt-30">
+          <div class="card-header">
+            Agent Status
+          </div>
+          <div id="user" class="card-body">
+            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card mt-30">
+          <div class="card-header">
+            Recent Activities
+          </div>
+          <div id="user" class="card-body">
+            <div id="myTimeline">
+              <div>
+                Agent1 start call with +1 (415) 555-2837
+              </div>
+              <div>
+                My Content 2
+              </div>
+              <div>
+                My Content 3
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+
+<link rel="stylesheet" href="https://ryanfitzgerald.github.io/vertical-timeline/css/vertical-timeline.css">
+<script src="https://ryanfitzgerald.github.io/vertical-timeline/js/vertical-timeline.min.js"></script>
+<script type="text/javascript">
+  window.onload = function () {
+
+    var options = {
+      data: [{
+        type: "pie",
+        startAngle: 45,
+        showInLegend: "true",
+        legendText: "{label}",
+        indexLabel: "{label} ({y})",
+        yValueFormatString: "#,##0.#" % "",
+        dataPoints: [{
+            label: "Available",
+            y: 20,
+            color: "#85FFBD"
+          },
+          {
+            label: "On Call",
+            y: 30,
+            color: "#FF0000"
+          },
+          {
+            label: "On Duty",
+            y: 50,
+            color: "#6284FF"
+          },
+        ]
+      }]
+    };
+    $("#chartContainer").CanvasJSChart(options);
+    $('#myTimeline').verticalTimeline({
+      startLeft: false,
+      alternate: true,
+      animate: "fade",
+      arrows: false
+    });
+
+  }
+
+</script>
+<style>
+  .status-card {
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 1000ms;
+    padding: 40px 30px;
+    border-radius: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+
+  .card-green {
+    background-color: #00D896;
+  }
+
+  .card-red {
+    background-color: #F70023;
+  } 
+
+  .card-blue {
+    background-color: #00C8C3;
+  }
+
+  .card-yello {
+    background-color: #F88E00;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .status-card i {
+    font-size: 40px;
+    margin-right: 30px;
+  }
+
+  .vtimeline-icon {
+    margin: 0px;
+    margin-top: -6px;
+    width: 10px;
+    height: 10px;
+    background: #9855ff;
+  }
+
+  .vtimeline:before {
+    width: 1px;
+    margin-left: 34px;
+    background: #838282;
+  }
+
+  .vtimeline-content {
+    margin-left: 20px;
+    background: #fff;
+  }
+
+  .vtimeline-right {
+    margin-left: 0%;
+  }
+
+</style>
+{# <script type="text/javascript"><!--
+                $('#button-setting').on('click', function () {
+                    $.ajax({
+                        url: 'index.php?route=common/developer&user_token={{ user_token }}',
+                        dataType: 'html',
+                        beforeSend: function () {
+                            $('#button-setting').prop('disabled', true).addClass('loading');
+                        },
+                        complete: function () {
+                            $('#button-setting').prop('disabled', false).removeClass('loading');
+                        },
+                        success: function (html) {
+                            $('#modal-developer').remove();
+                
+                            $('body').prepend(html);
+                
+                            $('#modal-developer').modal('show');
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                        }
+                    });
+                });
+                
+                $('input[name=\'developer_sass\']').on('change', function () {
+                    $.ajax({
+                        url: 'index.php?route=common/developer|edit&user_token={{ user_token }}',
+                        type: 'post',
+                        data: $('input[name=\'developer_sass\']:checked'),
+                        dataType: 'json',
+                        beforeSend: function () {
+                            $('input[name=\'developer_sass\']').prop('disabled', true);
+                        },
+                        complete: function () {
+                            $('input[name=\'developer_sass\']').prop('disabled', false);
+                        },
+                        success: function (json) {
+                            $('.alert-dismissible').remove();
+                
+                            if (json['error']) {
+                                $('#modal-developer .modal-body').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                            }
+                            if (json['success']) {
+                                $('#modal-developer .modal-body').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                            }
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                        }
+                    });
+                });
+                
+                $('#modal-developer table button').on('click', function () {
+                    var element = this;
+                
+                    $.ajax({
+                        url: 'index.php?route=common/developer|' + $(element).attr('value') + '&user_token={{ user_token }}',
+                        dataType: 'json',
+                        beforeSend: function () {
+                            $(element).prop('disabled', true).addClass('loading');
+                        },
+                        complete: function () {
+                            $(element).prop('disabled', false).removeClass('loading');
+                        },
+                        success: function (json) {
+                            $('.alert-dismissible').remove();
+                
+                            if (json['error']) {
+                                $('#modal-developer .modal-body').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                            }
+                
+                            if (json['success']) {
+                                $('#modal-developer .modal-body').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                            }
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                        }
+                    });
+                });
+                //--></script> #}
+{{ footer }}
